@@ -1,0 +1,4 @@
+[example.gitlab.com]
+  api_token = "your-access-token"
+
+# Add more sections for each of your gitlab domains (if you have multiple)
