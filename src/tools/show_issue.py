@@ -256,27 +256,27 @@ def show_issue(argv: list) -> int:
     for label in gitlab_project.issue.labels:
         raw_labels += f"**_{label}_** "
 
+    # Print raw markdown
     if is_raw_text:
-        print(gitlab_project.issue.title, end="")
+        print(f"# {gitlab_project.issue.title}", end="")
         print("\n")
         print(gitlab_project.issue.description, end="")
-        print("\n")
-        print("=========")
-        print("\n")
+        print("---")
         print(raw_labels)
         return 0
 
-    no_wrap = True
+    # Print rendered markdown
     force_terminal = True
+    crop = False
 
     console = Console(force_terminal=force_terminal)
     markdown_title = Markdown(f"# {gitlab_project.issue.title}")
     markdown_description = Markdown(gitlab_project.issue.description)
-    console.print(markdown_title, no_wrap=no_wrap)
-    console.print(markdown_description, no_wrap=no_wrap)
-    console.print(Markdown("---"), no_wrap=no_wrap)
-
     markdown_labels = Markdown(raw_labels)
-    console.print(markdown_labels, no_wrap=no_wrap)
+
+    console.print(markdown_title, crop=crop)
+    console.print(markdown_description, crop=crop)
+    console.print(Markdown("---"), crop=crop)
+    console.print(markdown_labels, crop=crop)
 
     return 0
