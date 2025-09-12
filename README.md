@@ -29,12 +29,12 @@ is located, while `tools` is where each of those tools and other logic is.
 
 To run without building, you must run the `src/main.py`:
 ```bash
-PYTHONPATH="src/" python main.py  # help will be printed out for further usage
+PYTHONPATH="./" python main.py  # help will be printed out for further usage
 ```
 
 > [!NOTE]
 > To be able to test the `show-issue` tool, you must run the above from a git project folder,
-in which case, you might also have to adjust the `PYTHONPATH` to point to the `src/` folder
+in which case, you might also have to adjust the `PYTHONPATH` to point to the `root/path/to/this/repo/` folder
 of this project.
 
 #### Makefile
@@ -46,6 +46,7 @@ build                          Build git-tools binary
 format                         Format using ruff
 lint                           Lint using mypy and ruff
 sanity                         Sanity check before formatting
+test                           Run pytest to test the code
 ```
 
 ### Building `git-tools`
@@ -65,5 +66,23 @@ shell config (`~/.bashrc`, `~/.zshrc`, etc.):
 export PATH=$PATH:"/path/to/git-tools/dist"
 ```
 
-#### Example usage
-![git-tools example usage](./git-tools.gif) 
+Then test the global use:
+```
+$ git-tools --help
+usage: git-tools [--help|options]
+
+Useful tools to use with your git project
+
+positional arguments:
+  {show-issue}  --help
+    show-issue  Show git issue description in your terminal
+
+options:
+  -h, --help    show this help message and exit
+```
+
+#### Example of a rendered issue description
+![git-tools example usage](./git-tools.jpg) 
+
+> [!TIP]
+> The above output can also be piped through `less` and similar.
