@@ -8,21 +8,21 @@ build: ## Build git-tools binary
 		pyinstaller --clean "git-tools.spec"
 
 .PHONY: format
-format:  ## Format using ruff
+format: ## Format using ruff
 	@echo "--- RUFF ---"
 	@ruff format --respect-gitignore
 	@ruff check --unsafe-fixes --fix --show-fixes
 
 .PHONY: lint
-lint:  ## Lint using mypy and ruff
+lint: ## Lint using mypy and ruff
 	@echo "--- MYPY ---"
 	@mypy .
 
-	@echo "\n--- RUFF ---"
+	@echo -e "\n--- RUFF ---"
 	@ruff check
 
 .PHONY: sanity
-sanity:  ## Sanity check before formatting
+sanity: ## Sanity check before formatting
 	@echo "--- RUFF ---"
 	@ruff format --check --diff --respect-gitignore
 	@ruff check --diff --unsafe-fixes
