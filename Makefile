@@ -26,3 +26,7 @@ sanity: ## Sanity check before formatting
 	@echo "--- RUFF ---"
 	@ruff format --check --diff --respect-gitignore
 	@ruff check --diff --unsafe-fixes
+
+.PHONY: test
+test: ## Run pytest to test the code
+	@pytest --verbosity 2 -k test
