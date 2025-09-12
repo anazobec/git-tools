@@ -1,3 +1,5 @@
+.vscode
+
 # python
 .venv
 __pycache__
@@ -10,4 +12,4 @@ dist
 git-tools.spec
 
 # testing
-dummy_repo
+dummy-project
